@@ -64,6 +64,18 @@ img { max-width: 100%; display: block; }
 }
 .nav-link:hover { color: var(--black); }
 .nav-link.active { color: var(--black); }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.lang-btn {
+  font-size: 0.65rem; font-weight: 300; letter-spacing: 0.12em;
+  color: var(--ash); text-transform: uppercase;
+  padding: 6px 0;
+  transition: color 0.3s;
+}
+.lang-btn:hover { color: var(--black); }
 .audio-btn {
   font-size: 0.65rem; font-weight: 300; letter-spacing: 0.12em;
   color: var(--ash); text-transform: uppercase;
@@ -368,132 +380,141 @@ img { max-width: 100%; display: block; }
 /* Global transition base */
 body { transition: background-color 3s, filter 2s; }
 .section, .editorial-image, .body-text, .designer-name, .label {
-  transition: all 0.5s ease;
+  transition: all 0.8s var(--ease);
 }
 
-/* ── FALL ANIMATIONS ── */
+/* ── ПЛАВНЫЕ ЭФФЕКТЫ ДРЕЙФА И ПОКАЧИВАНИЯ ── */
+@keyframes gentle-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(1px, 2px); }
+}
+@keyframes gentle-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(0.4deg) translate(0.5px, 0.5px); }
+}
+@keyframes slow-breathe {
+  0%, 100% { filter: blur(0px) contrast(1); }
+  50% { filter: blur(0.5px) contrast(0.98); }
+}
+
+/* ── FALL ANIMATIONS (Замедленные и плавные) ── */
 @keyframes fall-away {
   0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
-  15%  { transform: translateY(8px) rotate(-1deg); }
-  40%  { transform: translateY(80px) rotate(4deg); opacity: 0.9; }
-  70%  { transform: translateY(300px) rotate(-8deg); opacity: 0.5; }
-  100% { transform: translateY(120vh) rotate(25deg); opacity: 0; }
+  15%  { transform: translateY(8px) rotate(-0.5deg); }
+  45%  { transform: translateY(120px) rotate(2deg); opacity: 0.9; }
+  75%  { transform: translateY(450px) rotate(-4deg); opacity: 0.4; }
+  100% { transform: translateY(120vh) rotate(12deg); opacity: 0; }
 }
 @keyframes fall-away-left {
   0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
-  20%  { transform: translate(-15px, 30px) rotate(-3deg); }
-  60%  { transform: translate(-60px, 250px) rotate(-12deg); opacity: 0.6; }
-  100% { transform: translate(-120px, 120vh) rotate(-35deg); opacity: 0; }
+  25%  { transform: translate(-10px, 40px) rotate(-1.5deg); }
+  65%  { transform: translate(-45px, 350px) rotate(-6deg); opacity: 0.5; }
+  100% { transform: translate(-90px, 120vh) rotate(-15deg); opacity: 0; }
 }
 @keyframes fall-away-right {
   0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
-  20%  { transform: translate(15px, 30px) rotate(3deg); }
-  60%  { transform: translate(60px, 250px) rotate(12deg); opacity: 0.6; }
-  100% { transform: translate(120px, 120vh) rotate(35deg); opacity: 0; }
+  25%  { transform: translate(10px, 40px) rotate(1.5deg); }
+  65%  { transform: translate(45px, 350px) rotate(6deg); opacity: 0.5; }
+  100% { transform: translate(90px, 120vh) rotate(15deg); opacity: 0; }
 }
 @keyframes fall-tumble {
   0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-  10%  { transform: translateY(5px) rotate(0deg) scale(1); }
-  30%  { transform: translateY(60px) rotate(6deg) scale(0.98); opacity: 0.9; }
-  50%  { transform: translateY(180px) rotate(-10deg) scale(0.95); opacity: 0.7; }
-  75%  { transform: translateY(400px) rotate(18deg) scale(0.9); opacity: 0.4; }
-  100% { transform: translateY(120vh) rotate(45deg) scale(0.8); opacity: 0; }
+  15%  { transform: translateY(5px) rotate(0deg) scale(1); }
+  40%  { transform: translateY(90px) rotate(3deg) scale(0.99); opacity: 0.9; }
+  65%  { transform: translateY(270px) rotate(-5deg) scale(0.95); opacity: 0.6; }
+  85%  { transform: translateY(550px) rotate(8deg) scale(0.9); opacity: 0.3; }
+  100% { transform: translateY(120vh) rotate(20deg) scale(0.85); opacity: 0; }
 }
 @keyframes crack-shake {
   0%, 100% { transform: translate(0,0) rotate(0); }
-  10% { transform: translate(-2px, 1px) rotate(-0.5deg); }
-  20% { transform: translate(3px, -1px) rotate(0.5deg); }
-  30% { transform: translate(-1px, 2px) rotate(-0.3deg); }
-  40% { transform: translate(2px, 0px) rotate(0.4deg); }
-  50% { transform: translate(-3px, 1px) rotate(-0.6deg); }
-  60% { transform: translate(1px, -2px) rotate(0.2deg); }
-  70% { transform: translate(-2px, 3px) rotate(-0.4deg); }
-  80% { transform: translate(3px, 1px) rotate(0.3deg); }
-  90% { transform: translate(-1px, -1px) rotate(-0.2deg); }
+  20% { transform: translate(-1px, 0.5px) rotate(-0.2deg); }
+  40% { transform: translate(1px, -0.5px) rotate(0.2deg); }
+  60% { transform: translate(-0.5px, 1px) rotate(-0.1deg); }
+  80% { transform: translate(0.5px, -0.5px) rotate(0.1deg); }
 }
 @keyframes hang-loose {
   0%   { transform-origin: top left; transform: rotate(0deg); }
-  30%  { transform: rotate(3deg); }
-  60%  { transform: rotate(-2deg); }
-  100% { transform: rotate(5deg); }
+  30%  { transform: rotate(1.5deg); }
+  60%  { transform: rotate(-1deg); }
+  100% { transform: rotate(2deg); }
 }
 @keyframes collapse-down {
   0%   { transform: translateY(0); clip-path: inset(0 0 0 0); opacity: 1; }
-  40%  { transform: translateY(20px); clip-path: inset(0 0 0 0); opacity: 0.9; }
-  80%  { transform: translateY(100px); clip-path: inset(30% 5% 0 5%); opacity: 0.5; }
-  100% { transform: translateY(200px); clip-path: inset(60% 10% 0 10%); opacity: 0; }
+  45%  { transform: translateY(30px); clip-path: inset(0 0 0 0); opacity: 0.9; }
+  80%  { transform: translateY(120px); clip-path: inset(20% 3% 0 3%); opacity: 0.5; }
+  100% { transform: translateY(250px); clip-path: inset(50% 6% 0 6%); opacity: 0; }
 }
 
 /* ── Falling helper class (applied via JS) ── */
-.gravity-fall        { animation: fall-away 2.5s cubic-bezier(.45,.05,.95,.5) forwards !important; }
-.gravity-fall-left   { animation: fall-away-left 2.8s cubic-bezier(.45,.05,.95,.5) forwards !important; }
-.gravity-fall-right  { animation: fall-away-right 2.8s cubic-bezier(.45,.05,.95,.5) forwards !important; }
-.gravity-tumble      { animation: fall-tumble 3s cubic-bezier(.45,.05,.95,.5) forwards !important; }
-.gravity-hang        { animation: hang-loose 4s ease-in-out infinite alternate !important; transform-origin: top left; }
-.gravity-shake       { animation: crack-shake 0.6s ease-in-out !important; }
-.gravity-collapse    { animation: collapse-down 2s cubic-bezier(.45,.05,.95,.5) forwards !important; }
+.gravity-fall        { animation: fall-away 4.5s cubic-bezier(.4, 0, .2, 1) forwards !important; }
+.gravity-fall-left   { animation: fall-away-left 5s cubic-bezier(.4, 0, .2, 1) forwards !important; }
+.gravity-fall-right  { animation: fall-away-right 5s cubic-bezier(.4, 0, .2, 1) forwards !important; }
+.gravity-tumble      { animation: fall-tumble 5.5s cubic-bezier(.4, 0, .2, 1) forwards !important; }
+.gravity-hang        { animation: hang-loose 6s ease-in-out infinite alternate !important; transform-origin: top left; }
+.gravity-shake       { animation: crack-shake 0.8s ease-in-out !important; }
+.gravity-collapse    { animation: collapse-down 3.5s cubic-bezier(.4, 0, .2, 1) forwards !important; }
 
-/* Level 1 — Subtle tremor */
-[data-level="1"] #grain { opacity: 0.1; }
-[data-level="1"] .site-header { letter-spacing: -0.02em; }
-[data-level="1"] .editorial-image { filter: contrast(1.02) sepia(0.05); }
-[data-level="1"] .text-block:nth-child(odd) { animation: crack-shake 3s ease-in-out infinite; }
+/* Level 1 — Плавные покачивания (без тряски блоков) */
+[data-level="1"] #grain { opacity: 0.08; }
+[data-level="1"] .site-header { letter-spacing: -0.01em; }
+[data-level="1"] .editorial-image { filter: contrast(1.01) sepia(0.02); }
+[data-level="1"] .text-block:nth-child(odd) { animation: gentle-sway 8s ease-in-out infinite; }
 
-/* Level 2 — Elements start hanging loose */
-[data-level="2"] #grain { opacity: 0.15; }
-[data-level="2"] .editorial-image { filter: contrast(1.1) sepia(0.1); }
-[data-level="2"] .designer-name { text-shadow: 1px 0 0 rgba(255,0,0,0.2); animation: crack-shake 2s ease-in-out infinite; }
-[data-level="2"] .designer-quote { animation: hang-loose 5s ease-in-out infinite alternate; transform-origin: top left; }
-[data-level="2"] .img-caption { animation: hang-loose 4s ease-in-out infinite alternate; transform-origin: top right; }
+/* Level 2 — Плавное зависание и медленное покачивание */
+[data-level="2"] #grain { opacity: 0.12; }
+[data-level="2"] .editorial-image { filter: contrast(1.05) sepia(0.05); }
+[data-level="2"] .designer-name { text-shadow: 0.5px 0 0 rgba(255,0,0,0.15); animation: gentle-drift 6s ease-in-out infinite; }
+[data-level="2"] .designer-quote { animation: hang-loose 7s ease-in-out infinite alternate; transform-origin: top left; }
+[data-level="2"] .img-caption { animation: hang-loose 6s ease-in-out infinite alternate; transform-origin: top right; }
 
-/* Level 3 — Pieces start detaching */
+/* Level 3 — Элементы плавно наклоняются и начинают провисать */
 [data-level="3"] { background-color: #e2dfd9; }
-[data-level="3"] #grain { opacity: 0.2; }
-[data-level="3"] .creeping-void { transform: translateY(60%); opacity: 0.5; }
-[data-level="3"] .garment-year { animation: fall-away 4s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 0s); }
-[data-level="3"] .gallery-hint { animation: fall-away-left 3s cubic-bezier(.45,.05,.95,.5) forwards; }
-[data-level="3"] .section-index { animation: hang-loose 3s ease-in-out infinite alternate; transform-origin: top center; }
+[data-level="3"] #grain { opacity: 0.16; }
+[data-level="3"] .creeping-void { transform: translateY(60%); opacity: 0.4; }
+[data-level="3"] .garment-year { animation: fall-away 6s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: var(--fall-delay, 0s); }
+[data-level="3"] .gallery-hint { animation: fall-away-left 5s cubic-bezier(.4, 0, .2, 1) forwards; }
+[data-level="3"] .section-index { animation: hang-loose 5s ease-in-out infinite alternate; transform-origin: top center; }
 
-/* Level 4 — Heavy falling, images break loose */
+/* Level 4 — Плавное осыпание блоков */
 [data-level="4"] { background-color: #c0bdb7; color: #333; }
-[data-level="4"] #grain { opacity: 0.3; }
-[data-level="4"] .creeping-void { transform: translateY(20%); opacity: 0.8; height: 150vh; }
-[data-level="4"] .main { filter: grayscale(0.4) contrast(1.1); }
-[data-level="4"] .site-header { opacity: 0.5; filter: blur(2px); animation: crack-shake 1s ease-in-out infinite; }
-[data-level="4"] .editorial-image { animation: fall-tumble 5s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 0.5s); }
-[data-level="4"] .garment-item:nth-child(1) .garment-img { animation: fall-away-left 4s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: 0.8s; }
-[data-level="4"] .garment-item:nth-child(2) .garment-img { animation: fall-away 3.5s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: 1.2s; }
-[data-level="4"] .garment-item:nth-child(3) .garment-img { animation: fall-away-right 4s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: 1.6s; }
-[data-level="4"] .text-block { animation: collapse-down 3s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 1s); }
+[data-level="4"] #grain { opacity: 0.22; }
+[data-level="4"] .creeping-void { transform: translateY(20%); opacity: 0.7; height: 150vh; }
+[data-level="4"] .main { filter: grayscale(0.3) contrast(1.05); }
+[data-level="4"] .site-header { opacity: 0.6; filter: blur(1px); animation: gentle-drift 5s ease-in-out infinite; }
+[data-level="4"] .editorial-image { animation: fall-tumble 7s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: var(--fall-delay, 1s); }
+[data-level="4"] .garment-item:nth-child(1) .garment-img { animation: fall-away-left 6s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: 1.5s; }
+[data-level="4"] .garment-item:nth-child(2) .garment-img { animation: fall-away 5.5s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: 2.2s; }
+[data-level="4"] .garment-item:nth-child(3) .garment-img { animation: fall-away-right 6s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: 2.8s; }
+[data-level="4"] .text-block { animation: collapse-down 5s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: var(--fall-delay, 2s); }
 
-/* Level 5 — Catastrophic collapse */
-[data-level="5"] { background-color: #0a0a0a; color: #666; }
-[data-level="5"] #grain { opacity: 0.5; mix-blend-mode: hard-light; }
-[data-level="5"] .creeping-void { transform: translateY(-10%); opacity: 1; height: 200vh; background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0) 100%); }
-[data-level="5"] .main { filter: grayscale(0.8) contrast(1.2); }
-[data-level="5"] .designer-name { animation: fall-away-left 3s cubic-bezier(.45,.05,.95,.5) forwards !important; }
-[data-level="5"] .designer-quote { animation: fall-away-right 3.5s cubic-bezier(.45,.05,.95,.5) forwards !important; animation-delay: 0.3s; }
-[data-level="5"] .body-text { animation: fall-tumble 3s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 0.5s); }
-[data-level="5"] .editorial-image { animation: fall-away 4s cubic-bezier(.45,.05,.95,.5) forwards !important; }
-[data-level="5"] .garment-img { animation: fall-tumble 3s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 0.2s); }
-[data-level="5"] .garment-title { animation: fall-away-left 2.5s cubic-bezier(.45,.05,.95,.5) forwards; }
-[data-level="5"] .label { animation: fall-away-right 2s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: 0.8s; }
-[data-level="5"] .section-header { animation: crack-shake 0.5s ease-in-out 3, fall-away 2s cubic-bezier(.45,.05,.95,.5) 1.5s forwards; }
+/* Level 5 — Медленное погружение во тьму */
+[data-level="5"] { background-color: #0c0c0c; color: #777; }
+[data-level="5"] #grain { opacity: 0.35; mix-blend-mode: hard-light; }
+[data-level="5"] .creeping-void { transform: translateY(-10%); opacity: 0.95; height: 200vh; background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0) 100%); }
+[data-level="5"] .main { filter: grayscale(0.7) contrast(1.15); }
+[data-level="5"] .designer-name { animation: fall-away-left 5s cubic-bezier(.4, 0, .2, 1) forwards !important; }
+[data-level="5"] .designer-quote { animation: fall-away-right 5.5s cubic-bezier(.4, 0, .2, 1) forwards !important; animation-delay: 0.5s; }
+[data-level="5"] .body-text { animation: fall-tumble 5s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: var(--fall-delay, 1s); }
+[data-level="5"] .editorial-image { animation: fall-away 6.5s cubic-bezier(.4, 0, .2, 1) forwards !important; }
+[data-level="5"] .garment-img { animation: fall-tumble 5s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: var(--fall-delay, 0.8s); }
+[data-level="5"] .garment-title { animation: fall-away-left 4.5s cubic-bezier(.4, 0, .2, 1) forwards; }
+[data-level="5"] .label { animation: fall-away-right 4s cubic-bezier(.4, 0, .2, 1) forwards; animation-delay: 1.5s; }
+[data-level="5"] .section-header { animation: gentle-drift 4s ease-in-out infinite, fall-away 4.5s cubic-bezier(.4, 0, .2, 1) 2.5s forwards; }
 
-/* Level 6 — THE VOID: everything collapses */
+/* Level 6 — ПОЛНЫЙ КОЛЛАПС (Чернота) */
 [data-level="6"] { background-color: #000 !important; }
 [data-level="6"] #grain { opacity: 0; }
 [data-level="6"] .main > * {
-  animation: fall-tumble 2s cubic-bezier(.45,.05,.95,.5) forwards;
-  animation-delay: calc(var(--section-index, 0) * 0.3s);
+  animation: fall-tumble 3.5s cubic-bezier(.4, 0, .2, 1) forwards;
+  animation-delay: calc(var(--section-index, 0) * 0.5s);
 }
 [data-level="6"] .creeping-void { transform: translateY(0); opacity: 1; background: #000; }
-[data-level="6"] .site-header { animation: fall-away 1.5s cubic-bezier(.45,.05,.95,.5) forwards !important; pointer-events: none; }
+[data-level="6"] .site-header { animation: fall-away 2.5s cubic-bezier(.4, 0, .2, 1) forwards !important; pointer-events: none; }
 [data-level="6"] .infinite-void-section { height: 400vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 30vh; position: relative; z-index: 200; animation: none !important; }
 [data-level="6"] .void-content { position: sticky; top: 40vh; }
-[data-level="6"] .void-text { color: #333; font-size: 0.75rem; line-height: 2; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; animation: void-fade 6s infinite alternate !important; }
+[data-level="6"] .void-text { color: #222; font-size: 0.75rem; line-height: 2; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; animation: void-fade 8s infinite alternate !important; }
 
-@keyframes void-fade { 0% { opacity: 0.1; } 100% { opacity: 0.6; text-shadow: 0 0 10px rgba(255,255,255,0.1); } }
+@keyframes void-fade { 0% { opacity: 0.05; } 100% { opacity: 0.4; text-shadow: 0 0 15px rgba(255,255,255,0.05); } }
 
 /* ── CREEPING OVERLAY ── */
 .creeping-void {
@@ -501,7 +522,7 @@ body { transition: background-color 3s, filter 2s; }
   background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0) 100%);
   z-index: 150; pointer-events: none;
   transform: translateY(100%);
-  transition: transform 2s var(--ease), opacity 2s var(--ease), background 2s;
+  transition: transform 3s var(--ease), opacity 3s var(--ease), background 3s;
   opacity: 0;
   filter: url(#roots);
 }
@@ -521,39 +542,47 @@ body { transition: background-color 3s, filter 2s; }
 
 /* ══════════════════════════════════
    TIME-BASED DECAY SYSTEM
+   (Плавное разложение со временем)
 ══════════════════════════════════ */
 
-/* Decay 1 (30s) — Slight Text Jitter */
+/* Decay 1 (45s) — Легкое хроматическое размытие */
 .decay-time-1 .designer-name, .decay-time-1 .hero-title {
-  text-shadow: 1px 0px 0px #f00, -1px 0px 0px #0ff;
+  text-shadow: 0.5px 0px 0px rgba(255,0,0,0.5), -0.5px 0px 0px rgba(0,255,255,0.5);
+  transition: text-shadow 2s ease;
 }
 
-/* Decay 2 (1m) — Occasional Void Inversion Pulses */
-.decay-time-2 { animation: time-pulse 10s infinite; }
-@keyframes time-pulse { 0%, 98%, 100% { filter: invert(0); } 99% { filter: invert(1); background: #000; } }
+/* Decay 2 (1.5m) — Медленное увядание тонов и размытие */
+.decay-time-2 { animation: time-pulse 20s infinite ease-in-out; }
+@keyframes time-pulse {
+  0%, 100% { filter: blur(0px) contrast(1) brightness(1); }
+  50% { filter: blur(0.8px) contrast(0.95) brightness(0.95); }
+}
 
-/* Decay 3 (1.5m) — Ghost Duplications & UI Bleed */
+/* Decay 3 (2.5m) — Текстовые оверлеи и наслоения */
 .decay-time-3 .section-header::after {
-  content: "THE ARCHIVE IS FULL";
+  content: "АРХИВ ПЕРЕПОЛНЕН";
   position: absolute;
   top: 10px; right: 0;
-  color: red; opacity: 0.1; font-size: 8rem; white-space: nowrap; pointer-events: none;
-  transform: scale(1.5); mix-blend-mode: multiply;
+  color: red; opacity: 0.05; font-size: 6rem; white-space: nowrap; pointer-events: none;
+  transform: scale(1.2); mix-blend-mode: multiply;
+  transition: all 3s ease;
 }
 .decay-time-3 .garment-img::after {
   content: ''; position: absolute; inset: 0;
-  background: inherit; mix-blend-mode: screen; transform: translate(5px, 5px); opacity: 0.3; pointer-events: none;
+  background: inherit; mix-blend-mode: screen; transform: translate(3px, 3px); opacity: 0.2; pointer-events: none;
+  transition: all 3s ease;
 }
 
-/* Decay 4 (2m) — Complete Structural Grid Failure */
+/* Decay 4 (3.5m) — Плавный структурный сдвиг сетки */
 .decay-time-4 .garment-grid {
   grid-template-columns: repeat(2, 1fr) !important;
   gap: 15px; border: none; background: transparent;
+  transition: all 3s ease;
 }
-.decay-time-4 .garment-item { transform: rotate(1deg); }
-.decay-time-4 .garment-item:nth-child(even) { transform: rotate(-2deg) translateY(20px); }
-.decay-time-4 .body-text { letter-spacing: 0.2em; word-spacing: -0.4em; }
-.decay-time-4 .editorial-image { border: none; border-radius: 50% 10% 30% 60%; }
+.decay-time-4 .garment-item { transform: rotate(0.5deg); transition: transform 3s ease; }
+.decay-time-4 .garment-item:nth-child(even) { transform: rotate(-1deg) translateY(10px); transition: transform 3s ease; }
+.decay-time-4 .body-text { letter-spacing: 0.05em; word-spacing: -0.1em; transition: all 3s ease; }
+.decay-time-4 .editorial-image { border: none; border-radius: 8px; transition: all 3s ease; }
 
 /* ══════════════════════════════════
    OS DEATH SCREEN
@@ -562,7 +591,7 @@ body { transition: background-color 3s, filter 2s; }
   position: fixed; inset: 0; z-index: 999999;
   background-color: #000;
   display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity 0.5s ease-in;
+  opacity: 0; transition: opacity 1.5s ease-in;
   pointer-events: none;
 }
 .os-death-screen.visible {
@@ -570,4 +599,37 @@ body { transition: background-color 3s, filter 2s; }
 }
 .os-death-screen img {
   width: 100vw; height: 100vh; object-fit: cover;
+}
+
+/* ── ЭФФЕКТ РАЗРЕЗАНИЯ ЭЛЕМЕНТОВ (SPLIT EFFECT) ── */
+.split-container {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1200;
+  transition: none;
+}
+.split-half {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transition: none;
+}
+.split-half-1 {
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  animation: split-fall-1 4.5s cubic-bezier(.25, .1, .25, 1) forwards;
+}
+.split-half-2 {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  animation: split-fall-2 4.8s cubic-bezier(.25, .1, .25, 1) forwards;
+}
+
+@keyframes split-fall-1 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  15% { transform: translate(-8px, 12px) rotate(-1.5deg); }
+  100% { transform: translate(-150px, 120vh) rotate(-20deg); opacity: 0; }
+}
+@keyframes split-fall-2 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  15% { transform: translate(8px, 18px) rotate(2deg); }
+  100% { transform: translate(180px, 120vh) rotate(25deg); opacity: 0; }
 }

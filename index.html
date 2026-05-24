@@ -23,15 +23,15 @@
   <!-- ── SITE HEADER ── -->
   <header class="site-header" id="site-header">
     <div class="header-left">
-      <span class="site-title">ARCHIVE</span>
-      <span class="site-sub">Avant-Garde Fashion — Vol. I</span>
+      <span class="site-title" data-en="ARCHIVE" data-ru="АРХИВ">ARCHIVE</span>
+      <span class="site-sub" data-en="Avant-Garde Fashion — Vol. I" data-ru="Авангардная Мода — Том I">Avant-Garde Fashion — Vol. I</span>
     </div>
     <nav class="header-nav" id="header-nav">
-      <button class="nav-link" data-target="ch-owens">Owens</button>
-      <button class="nav-link" data-target="ch-poell">Poell</button>
-      <button class="nav-link" data-target="ch-margiela">Margiela</button>
-      <button class="nav-link" data-target="ch-yamamoto">Yamamoto</button>
-      <button class="nav-link" data-target="ch-guidi">Guidi</button>
+      <button class="nav-link" data-target="ch-owens" data-en="Owens" data-ru="Оуэнс">Owens</button>
+      <button class="nav-link" data-target="ch-poell" data-en="Poell" data-ru="Поэлл">Poell</button>
+      <button class="nav-link" data-target="ch-margiela" data-en="Margiela" data-ru="Маржела">Margiela</button>
+      <button class="nav-link" data-target="ch-yamamoto" data-en="Yamamoto" data-ru="Ямамото">Yamamoto</button>
+      <button class="nav-link" data-target="ch-guidi" data-en="Guidi" data-ru="Гуиди">Guidi</button>
     </nav>
     <div class="header-right">
       <!-- ── SVG FILTERS ── -->
@@ -51,9 +51,10 @@
           <feDisplacementMap in="SourceGraphic" in2="waves" scale="40" xChannelSelector="R" yChannelSelector="G" />
         </filter>
       </svg>
-      <!-- ── AUDIO ── -->
+      <!-- ── i18n & AUDIO ── -->
+      <button id="lang-btn" class="lang-btn" aria-label="Toggle language">RU</button>
       <button id="audio-btn" class="audio-btn" aria-label="Toggle sound">
-        <span class="audio-dot"></span>Sound
+        <span class="audio-dot"></span><span id="audio-label" data-en="Sound" data-ru="Звук">Sound</span>
       </button>
     </div>
   </header>
@@ -77,11 +78,10 @@
           </div>
         </div>
         <div class="hero-text-col">
-          <p class="overline">Est. 1981 — Ongoing</p>
-          <h1 class="hero-title">The<br /><em>Deconstruction</em><br />Archive</h1>
-          <p class="body-text">A curated record of garments that questioned the body, the seam, and the idea of clothing
-            itself. Five designers. One philosophy. No resolution.</p>
-          <p class="caption">Scroll to descend</p>
+          <p class="overline" data-en="Est. 1981 — Ongoing" data-ru="Осн. 1981 — По сей день">Est. 1981 — Ongoing</p>
+          <h1 class="hero-title" data-en="The<br /><em>Deconstruction</em><br />Archive" data-ru="Архив<br /><em>Деконструкции</em>">The<br /><em>Deconstruction</em><br />Archive</h1>
+          <p class="body-text" data-en="A curated record of garments that questioned the body, the seam, and the idea of clothing itself. Five designers. One philosophy. No resolution." data-ru="Собрание одежды, поставившей под сомнение тело, шов и саму идею костюма. Пятеро дизайнеров. Одна философия. Никакого разрешения.">A curated record of garments that questioned the body, the seam, and the idea of clothing itself. Five designers. One philosophy. No resolution.</p>
+          <p class="caption" data-en="Scroll to descend" data-ru="Прокрутите вниз">Scroll to descend</p>
           <div class="scroll-indicator">
             <div class="scroll-line"></div>
           </div>
@@ -97,8 +97,8 @@
       <div class="section-header">
         <span class="section-index">01</span>
         <div class="section-title-group">
-          <h2 class="designer-name">Rick Owens</h2>
-          <p class="designer-origin">Los Angeles / Paris — est. 1994</p>
+          <h2 class="designer-name" data-en="Rick Owens" data-ru="Рик Оуэнс">Rick Owens</h2>
+          <p class="designer-origin" data-en="Los Angeles / Paris — est. 1994" data-ru="Лос-Анджелес / Париж — осн. 1994">Los Angeles / Paris — est. 1994</p>
         </div>
       </div>
 
@@ -107,53 +107,49 @@
           <div class="editorial-image tall">
             <img src="assets/image/RickOwens_fullperson.jpg" alt="Rick Owens Portrait" />
           </div>
-          <p class="img-caption">FW2023 Luxor — runway, Paris</p>
+          <p class="img-caption" data-en="FW2023 Luxor — runway, Paris" data-ru="FW2023 Люксор — показ, Париж">FW2023 Luxor — runway, Paris</p>
         </div>
         <div class="col-text">
-          <blockquote class="designer-quote">"I make clothes for people who are not afraid of other people."
-          </blockquote>
+          <blockquote class="designer-quote" data-en="&ldquo;I make clothes for people who are not afraid of other people.&rdquo;" data-ru="&laquo;Я шью одежду для людей, которые не боятся других людей.&raquo;">"I make clothes for people who are not afraid of other people."</blockquote>
           <div class="text-block">
-            <p class="label">Philosophy</p>
-            <p class="body-text">The silhouette as monument. Draping as protest. Volume as the only honest response to
-              the human form. Owens builds garments the way architects build ruins — with intention toward eternity.</p>
+            <p class="label" data-en="Philosophy" data-ru="Философия">Philosophy</p>
+            <p class="body-text" data-en="The silhouette as monument. Draping as protest. Volume as the only honest response to the human form. Owens builds garments the way architects build ruins — with intention toward eternity." data-ru="Силуэт как монумент. Драпировка как протест. Объём как единственный честный ответ человеческому телу. Оуэнс строит одежду так, как архитекторы возводят руины — с умыслом на вечность.">The silhouette as monument. Draping as protest. Volume as the only honest response to the human form. Owens builds garments the way architects build ruins — with intention toward eternity.</p>
           </div>
           <div class="text-block">
-            <p class="label">Construction</p>
-            <p class="body-text">Boiled wool. Object-dyed leather. Asymmetric hem lines. Hand-finished seams that expose
-              the process. The lining as garment. The closure as ornament.</p>
+            <p class="label" data-en="Construction" data-ru="Конструкция">Construction</p>
+            <p class="body-text" data-en="Boiled wool. Object-dyed leather. Asymmetric hem lines. Hand-finished seams that expose the process. The lining as garment. The closure as ornament." data-ru="Валяная шерсть. Кожа, окрашенная целиком. Асимметричные линии подола. Отделанные вручную швы, обнажающие процесс. Подкладка как отдельная вещь. Застёжка как украшение.">Boiled wool. Object-dyed leather. Asymmetric hem lines. Hand-finished seams that expose the process. The lining as garment. The closure as ornament.</p>
           </div>
           <div class="text-block">
-            <p class="label">Collections Referenced</p>
-            <p class="ref-list">FW2014 Faun — SS2015 Sphinx — FW2023 Luxor<br />SS2011 Palace — FW2006 Release — SS2024
-              Porterville</p>
+            <p class="label" data-en="Collections Referenced" data-ru="Упомянутые коллекции">Collections Referenced</p>
+            <p class="ref-list" data-en="FW2014 Faun — SS2015 Sphinx — FW2023 Luxor<br />SS2011 Palace — FW2006 Release — SS2024 Porterville" data-ru="FW2014 Фавн — SS2015 Сфинкс — FW2023 Люксор<br />SS2011 Дворец — FW2006 Релиз — SS2024 Портервилль">FW2014 Faun — SS2015 Sphinx — FW2023 Luxor<br />SS2011 Palace — FW2006 Release — SS2024 Porterville</p>
           </div>
         </div>
       </div>
 
       <!-- Gallery -->
       <div class="gallery-label">
-        <span class="label">Garment Archive</span>
-        <span class="gallery-hint">hover any piece</span>
+        <span class="label" data-en="Garment Archive" data-ru="Гардеробный Архив">Garment Archive</span>
+        <span class="gallery-hint" data-en="hover any piece" data-ru="наведите на вещь">hover any piece</span>
       </div>
       <div class="garment-grid" id="owens-gallery">
         <div class="garment-item" data-id="ro1">
           <div class="garment-img"><img
               src="assets/image/ss2020-rick-owens-megalaced-tecuatl-black-trucker-jacket-sm-eltgjqz-7-pmwzr.jpg"
               alt="Megalaced Trucker Jacket" /></div>
-          <p class="garment-title">Megalaced Trucker Jacket</p>
-          <p class="garment-year">SS2020</p>
+          <p class="garment-title" data-en="Megalaced Trucker Jacket" data-ru="Куртка-трукер Megalaced">Megalaced Trucker Jacket</p>
+          <p class="garment-year" data-en="SS2020" data-ru="SS2020">SS2020</p>
         </div>
         <div class="garment-item" data-id="ro2">
           <div class="garment-img"><img
               src="assets/image/Rick-Owens-DRKSHDW-Bolan-Bootcut-Patchwork-Flared-Jeans-Mineral-Pearl.jpg"
               alt="Bolan Patchwork Jeans" /></div>
-          <p class="garment-title">Bolan Patchwork Flare Jeans</p>
-          <p class="garment-year">Ongoing</p>
+          <p class="garment-title" data-en="Bolan Patchwork Flare Jeans" data-ru="Джинсы-клёш с лоскутами Болан">Bolan Patchwork Flare Jeans</p>
+          <p class="garment-year" data-en="Ongoing" data-ru="Постоянная">Ongoing</p>
         </div>
         <div class="garment-item" data-id="ro3">
           <div class="garment-img"><img src="assets/image/RIckOwens-kissheels.jpg" alt="Kiss Heels" /></div>
-          <p class="garment-title">Kiss Heels</p>
-          <p class="garment-year">Ongoing</p>
+          <p class="garment-title" data-en="Kiss Heels" data-ru="Каблуки Kiss">Kiss Heels</p>
+          <p class="garment-year" data-en="Ongoing" data-ru="Постоянная">Ongoing</p>
         </div>
       </div>
 
@@ -169,59 +165,56 @@
       <div class="section-header">
         <span class="section-index">02</span>
         <div class="section-title-group">
-          <h2 class="designer-name">Carol Christian Poell</h2>
-          <p class="designer-origin">Milan — est. 1993</p>
+          <h2 class="designer-name" data-en="Carol Christian Poell" data-ru="Кэрол Кристиан Поэлл">Carol Christian Poell</h2>
+          <p class="designer-origin" data-en="Milan — est. 1993" data-ru="Милан — осн. 1993">Milan — est. 1993</p>
         </div>
       </div>
 
       <div class="two-col reverse">
         <div class="col-text">
-          <blockquote class="designer-quote">Process is the only truth the garment knows.</blockquote>
+          <blockquote class="designer-quote" data-en="Process is the only truth the garment knows." data-ru="Процесс — единственная правда, которую знает одежда.">Process is the only truth the garment knows.</blockquote>
           <div class="text-block">
-            <p class="label">Philosophy</p>
-            <p class="body-text">The seam as scar. The stitch as record of time spent. Poell builds garments that
-              remember their own construction — each layer of hand-stitching a document of the hours invested.</p>
+            <p class="label" data-en="Philosophy" data-ru="Философия">Philosophy</p>
+            <p class="body-text" data-en="The seam as scar. The stitch as record of time spent. Poell builds garments that remember their own construction — each layer of hand-stitching a document of the hours invested." data-ru="Шов как рубец. Стежок как летопись потраченного времени. Поэлл создаёт одежду, помнящую своё рождение — каждый слой ручной прошивки является документом вложенных часов.">The seam as scar. The stitch as record of time spent. Poell builds garments that remember their own construction — each layer of hand-stitching a document of the hours invested.</p>
           </div>
           <div class="text-block">
-            <p class="label">Construction</p>
-            <p class="body-text">Running stitch by hand. Drip-rubber sole application. Horse intestine lining.
-              Vegetable-tanned continuous leathers. No sample made — every piece is a prototype and a final.</p>
+            <p class="label" data-en="Construction" data-ru="Конструкция">Construction</p>
+            <p class="body-text" data-en="Running stitch by hand. Drip-rubber sole application. Horse intestine lining. Vegetable-tanned continuous leathers. No sample made — every piece is a prototype and a final." data-ru="Ручной стежок вперёд иголкой. Подошва из жидкой резины методом окунания. Подкладка из кишок лошади. Непрерывная растительная кожа. Образцов нет — каждая вещь одновременно прототип и финал.">Running stitch by hand. Drip-rubber sole application. Horse intestine lining. Vegetable-tanned continuous leathers. No sample made — every piece is a prototype and a final.</p>
           </div>
           <div class="text-block">
-            <p class="label">Collections Referenced</p>
-            <p class="ref-list">AW2003 Continuous Jacket — SS2000 Drip Coat<br />AW2006 Suspended Sole — SS2004
-              Object-dyed Series</p>
+            <p class="label" data-en="Collections Referenced" data-ru="Упомянутые коллекции">Collections Referenced</p>
+            <p class="ref-list" data-en="AW2003 Continuous Jacket — SS2000 Drip Coat<br />AW2006 Suspended Sole — SS2004 Object-dyed Series" data-ru="AW2003 Непрерывный жакет — SS2000 Капающее пальто<br />AW2006 Подвесная подошва — SS2004 Серия объектного крашения">AW2003 Continuous Jacket — SS2000 Drip Coat<br />AW2006 Suspended Sole — SS2004 Object-dyed Series</p>
           </div>
         </div>
         <div class="col-image">
           <div class="editorial-image tall">
             <img src="assets/image/CPP_fullperson.jpg" alt="Carol Christian Poell Portrait" />
           </div>
-          <p class="img-caption">AW2003 — studio, Milan</p>
+          <p class="img-caption" data-en="AW2003 — studio, Milan" data-ru="AW2003 — студия, Милан">AW2003 — studio, Milan</p>
         </div>
       </div>
 
       <div class="gallery-label">
-        <span class="label">Garment Archive</span>
-        <span class="gallery-hint">hover any piece</span>
+        <span class="label" data-en="Garment Archive" data-ru="Гардеробный Архив">Garment Archive</span>
+        <span class="gallery-hint" data-en="hover any piece" data-ru="наведите на вещь">hover any piece</span>
       </div>
       <div class="garment-grid" id="poell-gallery">
         <div class="garment-item" data-id="ccp1">
           <div class="garment-img"><img src="assets/image/CPP-pig_bag.jpg" alt="Pig Bag" /></div>
-          <p class="garment-title">Pig Bag</p>
-          <p class="garment-year">Object Series</p>
+          <p class="garment-title" data-en="Pig Bag" data-ru="Свиная сумка">Pig Bag</p>
+          <p class="garment-year" data-en="Object Series" data-ru="Серия объектов">Object Series</p>
         </div>
         <div class="garment-item" data-id="ccp2">
           <div class="garment-img"><img src="assets/image/CPP_porsthetic_drip_boots.jpg" alt="Prosthetic Drip Boots" />
           </div>
-          <p class="garment-title">Prosthetic Drip Boots</p>
-          <p class="garment-year">AW2006</p>
+          <p class="garment-title" data-en="Prosthetic Drip Boots" data-ru="Протезные сапоги с каплями">Prosthetic Drip Boots</p>
+          <p class="garment-year" data-en="AW2006" data-ru="AW2006">AW2006</p>
         </div>
         <div class="garment-item" data-id="ccp3">
           <div class="garment-img"><img src="assets/image/carol-christian-poell-necklace-with-teeth-MM1480.jpg"
               alt="Teeth Necklace" /></div>
-          <p class="garment-title">Teeth Necklace</p>
-          <p class="garment-year">Ongoing</p>
+          <p class="garment-title" data-en="Teeth Necklace" data-ru="Ожерелье из зубов">Teeth Necklace</p>
+          <p class="garment-year" data-en="Ongoing" data-ru="Постоянная">Ongoing</p>
         </div>
       </div>
 
@@ -237,8 +230,8 @@
       <div class="section-header">
         <span class="section-index">03</span>
         <div class="section-title-group">
-          <h2 class="designer-name">Maison Margiela</h2>
-          <p class="designer-origin">Paris — est. 1988</p>
+          <h2 class="designer-name" data-en="Maison Margiela" data-ru="Мэзон Маржела">Maison Margiela</h2>
+          <p class="designer-origin" data-en="Paris — est. 1988" data-ru="Париж — осн. 1988">Paris — est. 1988</p>
         </div>
       </div>
 
@@ -247,49 +240,44 @@
           <div class="editorial-image tall">
             <img src="assets/image/MMM_fullperson.jpg" alt="Maison Margiela Portrait" />
           </div>
-          <p class="img-caption">SS1989 — presentation, Paris</p>
+          <p class="img-caption" data-en="SS1989 — presentation, Paris" data-ru="SS1989 — презентация, Париж">SS1989 — presentation, Paris</p>
         </div>
         <div class="col-text">
-          <blockquote class="designer-quote">The white label is the refusal of the signature.</blockquote>
+          <blockquote class="designer-quote" data-en="The white label is the refusal of the signature." data-ru="Белый ярлык — это отказ от подписи.">The white label is the refusal of the signature.</blockquote>
           <div class="text-block">
-            <p class="label">Philosophy</p>
-            <p class="body-text">Anonymity as authorship. The stockman as garment. The lining as exterior. Margiela
-              systematically dismantled the conventions of fashion to reveal what fashion had always concealed: its own
-              construction.</p>
+            <p class="label" data-en="Philosophy" data-ru="Философия">Philosophy</p>
+            <p class="body-text" data-en="Anonymity as authorship. The stockman as garment. The lining as exterior. Margiela systematically dismantled the conventions of fashion to reveal what fashion had always concealed: its own construction." data-ru="Анонимность как авторство. Манекен как одежда. Подкладка снаружи. Маржела систематически разбирал устои моды, обнажая то, что она всегда скрывала: собственную конструкцию.">Anonymity as authorship. The stockman as garment. The lining as exterior. Margiela systematically dismantled the conventions of fashion to reveal what fashion had always concealed: its own construction.</p>
           </div>
           <div class="text-block">
-            <p class="label">Construction</p>
-            <p class="body-text">Replica of found objects. Artisanal reconstruction. Tabi boot as split-toe
-              architecture. Stockman jacket with exposed inner padding. The seam turned outward. The concept made
-              literal.</p>
+            <p class="label" data-en="Construction" data-ru="Конструкция">Construction</p>
+            <p class="body-text" data-en="Replica of found objects. Artisanal reconstruction. Tabi boot as split-toe architecture. Stockman jacket with exposed inner padding. The seam turned outward. The concept made literal." data-ru="Реплика найденных объектов. Ремесленная реконструкция. Ботинок таби как раздвоенная архитектура. Жакет-манекен с обнажённой набивкой. Шов вывернут наружу. Концепция буквализирована.">Replica of found objects. Artisanal reconstruction. Tabi boot as split-toe architecture. Stockman jacket with exposed inner padding. The seam turned outward. The concept made literal.</p>
           </div>
           <div class="text-block">
-            <p class="label">Collections Referenced</p>
-            <p class="ref-list">Line 0 Artisanal — Line 1 (womenswear) — Line 14<br />SS1989 — AW1992 Replica — AW2008
-              Les Vêtements</p>
+            <p class="label" data-en="Collections Referenced" data-ru="Упомянутые коллекции">Collections Referenced</p>
+            <p class="ref-list" data-en="Line 0 Artisanal — Line 1 (womenswear) — Line 14<br />SS1989 — AW1992 Replica — AW2008 Les Vêtements" data-ru="Линия 0 Артизанальная — Линия 1 (женская) — Линия 14<br />SS1989 — AW1992 Реплика — AW2008 Les Vêtements">Line 0 Artisanal — Line 1 (womenswear) — Line 14<br />SS1989 — AW1992 Replica — AW2008 Les Vêtements</p>
           </div>
         </div>
       </div>
 
       <div class="gallery-label">
-        <span class="label">Garment Archive</span>
-        <span class="gallery-hint">hover any piece</span>
+        <span class="label" data-en="Garment Archive" data-ru="Гардеробный Архив">Garment Archive</span>
+        <span class="gallery-hint" data-en="hover any piece" data-ru="наведите на вещь">hover any piece</span>
       </div>
       <div class="garment-grid" id="margiela-gallery">
         <div class="garment-item" data-id="mm1">
           <div class="garment-img"><img src="assets/image/MM-gats_pained.jpg" alt="Painted GATs" /></div>
-          <p class="garment-title">Painted GATs</p>
-          <p class="garment-year">Artisanal</p>
+          <p class="garment-title" data-en="Painted GATs" data-ru="Раскрашенные GAT">Painted GATs</p>
+          <p class="garment-year" data-en="Artisanal" data-ru="Артизанальная">Artisanal</p>
         </div>
         <div class="garment-item" data-id="mm2">
           <div class="garment-img"><img src="assets/image/mm-gats_japan.jpg" alt="Japan GATs" /></div>
-          <p class="garment-title">Japan GATs</p>
-          <p class="garment-year">Line 22</p>
+          <p class="garment-title" data-en="Japan GATs" data-ru="Японские GAT">Japan GATs</p>
+          <p class="garment-year" data-en="Line 22" data-ru="Линия 22">Line 22</p>
         </div>
         <div class="garment-item" data-id="mm3">
           <div class="garment-img"><img src="assets/image/mm_tabi.jpg" alt="Tabi Boot" /></div>
-          <p class="garment-title">Tabi Boot</p>
-          <p class="garment-year">Ongoing</p>
+          <p class="garment-title" data-en="Tabi Boot" data-ru="Ботинок Таби">Tabi Boot</p>
+          <p class="garment-year" data-en="Ongoing" data-ru="Постоянная">Ongoing</p>
         </div>
       </div>
 
@@ -305,59 +293,54 @@
       <div class="section-header">
         <span class="section-index">04</span>
         <div class="section-title-group">
-          <h2 class="designer-name">Yohji Yamamoto</h2>
-          <p class="designer-origin">Tokyo / Paris — est. 1972</p>
+          <h2 class="designer-name" data-en="Yohji Yamamoto" data-ru="Йоджи Ямамото">Yohji Yamamoto</h2>
+          <p class="designer-origin" data-en="Tokyo / Paris — est. 1972" data-ru="Токио / Париж — осн. 1972">Tokyo / Paris — est. 1972</p>
         </div>
       </div>
 
       <div class="two-col reverse">
         <div class="col-text">
-          <blockquote class="designer-quote">"Perfection is ugly. I want to see scars, failure, disorder, distortion."
-          </blockquote>
+          <blockquote class="designer-quote" data-en="&ldquo;Perfection is ugly. I want to see scars, failure, disorder, distortion.&rdquo;" data-ru="&laquo;Совершенство уродливо. Я хочу видеть шрамы, провалы, беспорядок, искажение.&raquo;">"Perfection is ugly. I want to see scars, failure, disorder, distortion."</blockquote>
           <div class="text-block">
-            <p class="label">Philosophy</p>
-            <p class="body-text">Black as the only honest response to color. Asymmetry as the truest geometry. The
-              unfinished hem as deliberate statement. Yamamoto refuses resolution — his garments exist in permanent
-              tension.</p>
+            <p class="label" data-en="Philosophy" data-ru="Философия">Philosophy</p>
+            <p class="body-text" data-en="Black as the only honest response to color. Asymmetry as the truest geometry. The unfinished hem as deliberate statement. Yamamoto refuses resolution — his garments exist in permanent tension." data-ru="Чёрный — единственный честный ответ на цвет. Асимметрия — подлинная геометрия. Незавершённый подол — намеренное высказывание. Ямамото отказывается от завершённости — его вещи существуют в состоянии постоянного напряжения.">Black as the only honest response to color. Asymmetry as the truest geometry. The unfinished hem as deliberate statement. Yamamoto refuses resolution — his garments exist in permanent tension.</p>
           </div>
           <div class="text-block">
-            <p class="label">Construction</p>
-            <p class="body-text">Asymmetric pattern cutting. Draped without fixing. Hanging seams. Deliberate
-              imprecision. The garment as shadow — present but refusing definition.</p>
+            <p class="label" data-en="Construction" data-ru="Конструкция">Construction</p>
+            <p class="body-text" data-en="Asymmetric pattern cutting. Draped without fixing. Hanging seams. Deliberate imprecision. The garment as shadow — present but refusing definition." data-ru="Асимметричный крой. Драпировка без фиксации. Свисающие швы. Намеренная неточность. Одежда как тень — присутствует, но отказывается быть определённой.">Asymmetric pattern cutting. Draped without fixing. Hanging seams. Deliberate imprecision. The garment as shadow — present but refusing definition.</p>
           </div>
           <div class="text-block">
-            <p class="label">Collections Referenced</p>
-            <p class="ref-list">SS1981 Hiroshima Chic — AW1983 — SS2003<br />Y's Series — Pour Homme — SS2011 — AW2022
-            </p>
+            <p class="label" data-en="Collections Referenced" data-ru="Упомянутые коллекции">Collections Referenced</p>
+            <p class="ref-list" data-en="SS1981 Hiroshima Chic — AW1983 — SS2003<br />Y's Series — Pour Homme — SS2011 — AW2022" data-ru="SS1981 Хиросима Шик — AW1983 — SS2003<br />Серия Y's — Pour Homme — SS2011 — AW2022">SS1981 Hiroshima Chic — AW1983 — SS2003<br />Y's Series — Pour Homme — SS2011 — AW2022</p>
           </div>
         </div>
         <div class="col-image">
           <div class="editorial-image tall">
             <img src="assets/image/YMM_fullperson.jpg" alt="Yohji Yamamoto Portrait" />
           </div>
-          <p class="img-caption">AW1983 — runway, Paris</p>
+          <p class="img-caption" data-en="AW1983 — runway, Paris" data-ru="AW1983 — показ, Париж">AW1983 — runway, Paris</p>
         </div>
       </div>
 
       <div class="gallery-label">
-        <span class="label">Garment Archive</span>
-        <span class="gallery-hint">hover any piece</span>
+        <span class="label" data-en="Garment Archive" data-ru="Гардеробный Архив">Garment Archive</span>
+        <span class="gallery-hint" data-en="hover any piece" data-ru="наведите на вещь">hover any piece</span>
       </div>
       <div class="garment-grid" id="yamamoto-gallery">
         <div class="garment-item" data-id="yy1">
           <div class="garment-img"><img src="assets/image/YMM_attach_print_coat.jpg" alt="Attach Print Coat" /></div>
-          <p class="garment-title">Attach Print Coat</p>
-          <p class="garment-year">Pour Homme</p>
+          <p class="garment-title" data-en="Attach Print Coat" data-ru="Пальто с принтом-аппликацией">Attach Print Coat</p>
+          <p class="garment-year" data-en="Pour Homme" data-ru="Pour Homme">Pour Homme</p>
         </div>
         <div class="garment-item" data-id="yy2">
           <div class="garment-img"><img src="assets/image/YMM_medium_wool_brim_hat.jpg" alt="Wool Brim Hat" /></div>
-          <p class="garment-title">Wool Brim Hat</p>
-          <p class="garment-year">Pour Homme</p>
+          <p class="garment-title" data-en="Wool Brim Hat" data-ru="Шерстяная шляпа с полями">Wool Brim Hat</p>
+          <p class="garment-year" data-en="Pour Homme" data-ru="Pour Homme">Pour Homme</p>
         </div>
         <div class="garment-item" data-id="yy3">
           <div class="garment-img"><img src="assets/image/YMM_side_zip-up_jacket.jpg" alt="Side Zip-up Jacket" /></div>
-          <p class="garment-title">Side Zip-up Jacket</p>
-          <p class="garment-year">Y's Series</p>
+          <p class="garment-title" data-en="Side Zip-up Jacket" data-ru="Жакет на боковой молнии">Side Zip-up Jacket</p>
+          <p class="garment-year" data-en="Y's Series" data-ru="Серия Y's">Y's Series</p>
         </div>
       </div>
 
@@ -373,8 +356,8 @@
       <div class="section-header">
         <span class="section-index">05</span>
         <div class="section-title-group">
-          <h2 class="designer-name">Guidi</h2>
-          <p class="designer-origin">Florence — est. 1988</p>
+          <h2 class="designer-name" data-en="Guidi" data-ru="Гуиди">Guidi</h2>
+          <p class="designer-origin" data-en="Florence — est. 1988" data-ru="Флоренция — осн. 1988">Florence — est. 1988</p>
         </div>
       </div>
 
@@ -383,48 +366,45 @@
           <div class="editorial-image tall">
             <img src="assets/image/Guidi.jpg" alt="Guidi Portrait" />
           </div>
-          <p class="img-caption">FW2015 — look 12 — Florence atelier</p>
+          <p class="img-caption" data-en="FW2015 — look 12 — Florence atelier" data-ru="FW2015 — образ 12 — ателье, Флоренция">FW2015 — look 12 — Florence atelier</p>
         </div>
         <div class="col-text">
-          <blockquote class="designer-quote">The leather lives. It remembers every touch.</blockquote>
+          <blockquote class="designer-quote" data-en="The leather lives. It remembers every touch." data-ru="Кожа живёт. Она помнит каждое прикосновение.">The leather lives. It remembers every touch.</blockquote>
           <div class="text-block">
-            <p class="label">Philosophy</p>
-            <p class="body-text">Object-dyeing on living hide. The gradient as autobiography. Time visible in the
-              surface of the material. Guidi makes garments that age with their wearer — each piece a collaboration
-              between maker and time.</p>
+            <p class="label" data-en="Philosophy" data-ru="Философия">Philosophy</p>
+            <p class="body-text" data-en="Object-dyeing on living hide. The gradient as autobiography. Time visible in the surface of the material. Guidi makes garments that age with their wearer — each piece a collaboration between maker and time." data-ru="Объектное крашение живой шкуры. Градиент как автобиография. Время, видимое на поверхности материала. Гуиди создаёт одежду, стареющую вместе с владельцем — каждая вещь является соавторством мастера и времени.">Object-dyeing on living hide. The gradient as autobiography. Time visible in the surface of the material. Guidi makes garments that age with their wearer — each piece a collaboration between maker and time.</p>
           </div>
           <div class="text-block">
-            <p class="label">Construction</p>
-            <p class="body-text">Horse leather on living horse. Vegetable-tanned hide. Hand-painted fire gradient.
-              Single-welt construction. The sole as statement of permanence against a disposable world.</p>
+            <p class="label" data-en="Construction" data-ru="Конструкция">Construction</p>
+            <p class="body-text" data-en="Horse leather on living horse. Vegetable-tanned hide. Hand-painted fire gradient. Single-welt construction. The sole as statement of permanence against a disposable world." data-ru="Конская кожа на живой лошади. Растительное дубление. Огневой градиент, нанесённый вручную. Единственный паз. Подошва как декларация постоянства перед лицом одноразового мира.">Horse leather on living horse. Vegetable-tanned hide. Hand-painted fire gradient. Single-welt construction. The sole as statement of permanence against a disposable world.</p>
           </div>
           <div class="text-block">
-            <p class="label">Collections Referenced</p>
-            <p class="ref-list">FW2010 — SS2013 — FW2018 — FW2022<br />Object-Dyed Leather Series — Horse Hide Boots</p>
+            <p class="label" data-en="Collections Referenced" data-ru="Упомянутые коллекции">Collections Referenced</p>
+            <p class="ref-list" data-en="FW2010 — SS2013 — FW2018 — FW2022<br />Object-Dyed Leather Series — Horse Hide Boots" data-ru="FW2010 — SS2013 — FW2018 — FW2022<br />Серия объектного крашения — Сапоги из конской кожи">FW2010 — SS2013 — FW2018 — FW2022<br />Object-Dyed Leather Series — Horse Hide Boots</p>
           </div>
         </div>
       </div>
 
       <div class="gallery-label">
-        <span class="label">Garment Archive</span>
-        <span class="gallery-hint">hover any piece</span>
+        <span class="label" data-en="Garment Archive" data-ru="Гардеробный Архив">Garment Archive</span>
+        <span class="gallery-hint" data-en="hover any piece" data-ru="наведите на вещь">hover any piece</span>
       </div>
       <div class="garment-grid" id="guidi-gallery">
         <div class="garment-item" data-id="g1">
           <div class="garment-img"><img src="assets/image/Guidi-Leathter_Boot.jpg" alt="Leather Boot" /></div>
-          <p class="garment-title">Leather Boot</p>
-          <p class="garment-year">Horse Hide</p>
+          <p class="garment-title" data-en="Leather Boot" data-ru="Кожаный сапог">Leather Boot</p>
+          <p class="garment-year" data-en="Horse Hide" data-ru="Конская кожа">Horse Hide</p>
         </div>
         <div class="garment-item" data-id="g2">
           <div class="garment-img"><img src="assets/image/Guidi-classy_leather_heel.jpg" alt="Classy Leather Heel" />
           </div>
-          <p class="garment-title">Classy Leather Heel</p>
-          <p class="garment-year">Ongoing</p>
+          <p class="garment-title" data-en="Classy Leather Heel" data-ru="Изысканный кожаный каблук">Classy Leather Heel</p>
+          <p class="garment-year" data-en="Ongoing" data-ru="Постоянная">Ongoing</p>
         </div>
         <div class="garment-item" data-id="g3">
           <div class="garment-img"><img src="assets/image/Guidi-leather_jacket.jpg" alt="Leather Jacket" /></div>
-          <p class="garment-title">Leather Jacket</p>
-          <p class="garment-year">Object-Dyed</p>
+          <p class="garment-title" data-en="Leather Jacket" data-ru="Кожаный жакет">Leather Jacket</p>
+          <p class="garment-year" data-en="Object-Dyed" data-ru="Объектное крашение">Object-Dyed</p>
         </div>
       </div>
 
@@ -437,7 +417,7 @@
     ══════════════════════════════════ -->
     <section class="section infinite-void-section" id="ch-void" data-depth="6">
       <div class="void-content">
-        <p class="void-text">The form is consumed.<br />Only the archive remains.</p>
+        <p class="void-text" data-en="The form is consumed.<br />Only the archive remains." data-ru="Форма поглощена.<br />Остался лишь архив.">The form is consumed.<br />Only the archive remains.</p>
       </div>
     </section>
 
@@ -459,7 +439,7 @@
 
   <!-- ── GAME OVERLAY ── -->
   <div class="game-overlay hidden" id="game-overlay">
-    <button class="overlay-close" id="game-close">Close</button>
+    <button class="overlay-close" id="game-close" data-en="Close" data-ru="Закрыть">Close</button>
     <div class="game-stage" id="game-stage"></div>
   </div>
 

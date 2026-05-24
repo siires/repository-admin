@@ -210,17 +210,6 @@ const io = new IntersectionObserver(entries => {
       navLinks.forEach(l => l.classList.toggle('active', l.dataset.target === 'ch-' + designer));
       // subtle flicker on transition from depth 3+
       if (depth >= 3) triggerFlicker();
-    }
-  });
-}, { threshold: 0.35 });
-SECTIONS.forEach(s => io.observe(s));
-
-// Nav smooth scroll
-navLinks.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = document.getElementById(btn.dataset.target);
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  });
 });
 
 function triggerFlicker() {

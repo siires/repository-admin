@@ -361,8 +361,8 @@ img { max-width: 100%; display: block; }
 @keyframes pg-blink { 0%{opacity:0.12} 100%{opacity:0} }
 
 /* ══════════════════════════════════
-   EXTREME DEFORMATION SYSTEM
-   From subtle drift to total madness
+   GRAVITY FALL DEFORMATION SYSTEM
+   Blocks crack, detach and fall
 ══════════════════════════════════ */
 
 /* Global transition base */
@@ -371,75 +371,127 @@ body { transition: background-color 3s, filter 2s; }
   transition: all 0.5s ease;
 }
 
-/* Level 1 — Almost imperceptible */
+/* ── FALL ANIMATIONS ── */
+@keyframes fall-away {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  15%  { transform: translateY(8px) rotate(-1deg); }
+  40%  { transform: translateY(80px) rotate(4deg); opacity: 0.9; }
+  70%  { transform: translateY(300px) rotate(-8deg); opacity: 0.5; }
+  100% { transform: translateY(120vh) rotate(25deg); opacity: 0; }
+}
+@keyframes fall-away-left {
+  0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
+  20%  { transform: translate(-15px, 30px) rotate(-3deg); }
+  60%  { transform: translate(-60px, 250px) rotate(-12deg); opacity: 0.6; }
+  100% { transform: translate(-120px, 120vh) rotate(-35deg); opacity: 0; }
+}
+@keyframes fall-away-right {
+  0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
+  20%  { transform: translate(15px, 30px) rotate(3deg); }
+  60%  { transform: translate(60px, 250px) rotate(12deg); opacity: 0.6; }
+  100% { transform: translate(120px, 120vh) rotate(35deg); opacity: 0; }
+}
+@keyframes fall-tumble {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+  10%  { transform: translateY(5px) rotate(0deg) scale(1); }
+  30%  { transform: translateY(60px) rotate(6deg) scale(0.98); opacity: 0.9; }
+  50%  { transform: translateY(180px) rotate(-10deg) scale(0.95); opacity: 0.7; }
+  75%  { transform: translateY(400px) rotate(18deg) scale(0.9); opacity: 0.4; }
+  100% { transform: translateY(120vh) rotate(45deg) scale(0.8); opacity: 0; }
+}
+@keyframes crack-shake {
+  0%, 100% { transform: translate(0,0) rotate(0); }
+  10% { transform: translate(-2px, 1px) rotate(-0.5deg); }
+  20% { transform: translate(3px, -1px) rotate(0.5deg); }
+  30% { transform: translate(-1px, 2px) rotate(-0.3deg); }
+  40% { transform: translate(2px, 0px) rotate(0.4deg); }
+  50% { transform: translate(-3px, 1px) rotate(-0.6deg); }
+  60% { transform: translate(1px, -2px) rotate(0.2deg); }
+  70% { transform: translate(-2px, 3px) rotate(-0.4deg); }
+  80% { transform: translate(3px, 1px) rotate(0.3deg); }
+  90% { transform: translate(-1px, -1px) rotate(-0.2deg); }
+}
+@keyframes hang-loose {
+  0%   { transform-origin: top left; transform: rotate(0deg); }
+  30%  { transform: rotate(3deg); }
+  60%  { transform: rotate(-2deg); }
+  100% { transform: rotate(5deg); }
+}
+@keyframes collapse-down {
+  0%   { transform: translateY(0); clip-path: inset(0 0 0 0); opacity: 1; }
+  40%  { transform: translateY(20px); clip-path: inset(0 0 0 0); opacity: 0.9; }
+  80%  { transform: translateY(100px); clip-path: inset(30% 5% 0 5%); opacity: 0.5; }
+  100% { transform: translateY(200px); clip-path: inset(60% 10% 0 10%); opacity: 0; }
+}
+
+/* ── Falling helper class (applied via JS) ── */
+.gravity-fall        { animation: fall-away 2.5s cubic-bezier(.45,.05,.95,.5) forwards !important; }
+.gravity-fall-left   { animation: fall-away-left 2.8s cubic-bezier(.45,.05,.95,.5) forwards !important; }
+.gravity-fall-right  { animation: fall-away-right 2.8s cubic-bezier(.45,.05,.95,.5) forwards !important; }
+.gravity-tumble      { animation: fall-tumble 3s cubic-bezier(.45,.05,.95,.5) forwards !important; }
+.gravity-hang        { animation: hang-loose 4s ease-in-out infinite alternate !important; transform-origin: top left; }
+.gravity-shake       { animation: crack-shake 0.6s ease-in-out !important; }
+.gravity-collapse    { animation: collapse-down 2s cubic-bezier(.45,.05,.95,.5) forwards !important; }
+
+/* Level 1 — Subtle tremor */
 [data-level="1"] #grain { opacity: 0.1; }
 [data-level="1"] .site-header { letter-spacing: -0.02em; }
 [data-level="1"] .editorial-image { filter: contrast(1.02) sepia(0.05); }
+[data-level="1"] .text-block:nth-child(odd) { animation: crack-shake 3s ease-in-out infinite; }
 
-/* Level 2 — The first cracks */
+/* Level 2 — Elements start hanging loose */
 [data-level="2"] #grain { opacity: 0.15; }
 [data-level="2"] .editorial-image { filter: contrast(1.1) sepia(0.1); }
-[data-level="2"] .body-text { color: #2a2a2a; }
-[data-level="2"] .designer-name { letter-spacing: -0.04em; text-shadow: 1px 0 0 rgba(255,0,0,0.2); }
+[data-level="2"] .designer-name { text-shadow: 1px 0 0 rgba(255,0,0,0.2); animation: crack-shake 2s ease-in-out infinite; }
+[data-level="2"] .designer-quote { animation: hang-loose 5s ease-in-out infinite alternate; transform-origin: top left; }
+[data-level="2"] .img-caption { animation: hang-loose 4s ease-in-out infinite alternate; transform-origin: top right; }
 
-/* Level 3 — Subtle instability & creep */
+/* Level 3 — Pieces start detaching */
 [data-level="3"] { background-color: #e2dfd9; }
 [data-level="3"] #grain { opacity: 0.2; }
 [data-level="3"] .creeping-void { transform: translateY(60%); opacity: 0.5; }
+[data-level="3"] .garment-year { animation: fall-away 4s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 0s); }
+[data-level="3"] .gallery-hint { animation: fall-away-left 3s cubic-bezier(.45,.05,.95,.5) forwards; }
+[data-level="3"] .section-index { animation: hang-loose 3s ease-in-out infinite alternate; transform-origin: top center; }
 
-/* Level 4 — Roots rise & initial dripping */
+/* Level 4 — Heavy falling, images break loose */
 [data-level="4"] { background-color: #c0bdb7; color: #333; }
 [data-level="4"] #grain { opacity: 0.3; }
 [data-level="4"] .creeping-void { transform: translateY(20%); opacity: 0.8; height: 150vh; }
 [data-level="4"] .main { filter: grayscale(0.4) contrast(1.1); }
-[data-level="4"] .site-header { opacity: 0.5; filter: blur(2px); }
-[data-level="4"] .editorial-image {
-  animation: drip-down 10s infinite alternate;
-}
-@keyframes drip-down {
-  0% { transform: translateY(0) scaleY(1); border-radius: 0; }
-  100% { transform: translateY(15px) scaleY(1.05); border-radius: 30% 10% 40% 20%; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); }
-}
+[data-level="4"] .site-header { opacity: 0.5; filter: blur(2px); animation: crack-shake 1s ease-in-out infinite; }
+[data-level="4"] .editorial-image { animation: fall-tumble 5s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 0.5s); }
+[data-level="4"] .garment-item:nth-child(1) .garment-img { animation: fall-away-left 4s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: 0.8s; }
+[data-level="4"] .garment-item:nth-child(2) .garment-img { animation: fall-away 3.5s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: 1.2s; }
+[data-level="4"] .garment-item:nth-child(3) .garment-img { animation: fall-away-right 4s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: 1.6s; }
+[data-level="4"] .text-block { animation: collapse-down 3s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 1s); }
 
-/* Level 5 — Darkness consumes, heavy lava melting & text melts */
+/* Level 5 — Catastrophic collapse */
 [data-level="5"] { background-color: #0a0a0a; color: #666; }
 [data-level="5"] #grain { opacity: 0.5; mix-blend-mode: hard-light; }
 [data-level="5"] .creeping-void { transform: translateY(-10%); opacity: 1; height: 200vh; background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0) 100%); }
 [data-level="5"] .main { filter: grayscale(0.8) contrast(1.2); }
-[data-level="5"] .body-text, [data-level="5"] .designer-name {
-  color: transparent;
-  text-shadow: 0 0 4px #444, 0 10px 15px rgba(0,0,0,0.8), 0 30px 40px rgba(0,0,0,0.9);
-  animation: downward 3s infinite alternate;
-}
-[data-level="5"] .editorial-image, [data-level="5"] .garment-img {
-  animation: drip-heavy 6s infinite alternate;
-  filter: grayscale(0.2);
-}
-@keyframes drip-heavy {
-  0% { transform: translateY(0) scaleY(1) skewX(0); border-radius: 0; }
-  100% { transform: translateY(40px) scaleY(1.2) skewX(5deg); border-radius: 60% 20% 80% 40%; filter: drop-shadow(0 20px 15px rgba(0,0,0,0.8)); }
-}
-@keyframes downward { to { text-shadow: 0 0 10px #777, 0 20px 30px #111, 0 60px 80px #000; } }
+[data-level="5"] .designer-name { animation: fall-away-left 3s cubic-bezier(.45,.05,.95,.5) forwards !important; }
+[data-level="5"] .designer-quote { animation: fall-away-right 3.5s cubic-bezier(.45,.05,.95,.5) forwards !important; animation-delay: 0.3s; }
+[data-level="5"] .body-text { animation: fall-tumble 3s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 0.5s); }
+[data-level="5"] .editorial-image { animation: fall-away 4s cubic-bezier(.45,.05,.95,.5) forwards !important; }
+[data-level="5"] .garment-img { animation: fall-tumble 3s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: var(--fall-delay, 0.2s); }
+[data-level="5"] .garment-title { animation: fall-away-left 2.5s cubic-bezier(.45,.05,.95,.5) forwards; }
+[data-level="5"] .label { animation: fall-away-right 2s cubic-bezier(.45,.05,.95,.5) forwards; animation-delay: 0.8s; }
+[data-level="5"] .section-header { animation: crack-shake 0.5s ease-in-out 3, fall-away 2s cubic-bezier(.45,.05,.95,.5) 1.5s forwards; }
 
-/* Level 6 — THE VOID */
+/* Level 6 — THE VOID: everything collapses */
 [data-level="6"] { background-color: #000 !important; }
 [data-level="6"] #grain { opacity: 0; }
-[data-level="6"] .main { 
-  animation: site-melt 15s forwards cubic-bezier(0.5, 0, 1, 1);
-  transform-origin: bottom center; 
-  pointer-events: none; 
-}
-@keyframes site-melt {
-  0% { transform: translateY(0) scaleY(1); filter: blur(0px); opacity: 1; }
-  30% { transform: translateY(10vh) scaleY(1.5); filter: url(#roots) blur(2px); opacity: 0.8; }
-  70% { transform: translateY(50vh) scaleY(3); filter: url(#roots) blur(6px); opacity: 0.5; }
-  100% { transform: translateY(200vh) scaleY(6); filter: url(#roots) blur(20px); opacity: 0; }
+[data-level="6"] .main > * {
+  animation: fall-tumble 2s cubic-bezier(.45,.05,.95,.5) forwards;
+  animation-delay: calc(var(--section-index, 0) * 0.3s);
 }
 [data-level="6"] .creeping-void { transform: translateY(0); opacity: 1; background: #000; }
-[data-level="6"] .site-header { opacity: 0 !important; pointer-events: none; }
-[data-level="6"] .infinite-void-section { height: 400vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 30vh; position: relative; z-index: 200; }
+[data-level="6"] .site-header { animation: fall-away 1.5s cubic-bezier(.45,.05,.95,.5) forwards !important; pointer-events: none; }
+[data-level="6"] .infinite-void-section { height: 400vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 30vh; position: relative; z-index: 200; animation: none !important; }
 [data-level="6"] .void-content { position: sticky; top: 40vh; }
-[data-level="6"] .void-text { color: #333; font-size: 0.75rem; line-height: 2; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; animation: void-fade 6s infinite alternate; }
+[data-level="6"] .void-text { color: #333; font-size: 0.75rem; line-height: 2; letter-spacing: 0.2em; text-align: center; text-transform: uppercase; animation: void-fade 6s infinite alternate !important; }
 
 @keyframes void-fade { 0% { opacity: 0.1; } 100% { opacity: 0.6; text-shadow: 0 0 10px rgba(255,255,255,0.1); } }
 
@@ -451,7 +503,7 @@ body { transition: background-color 3s, filter 2s; }
   transform: translateY(100%);
   transition: transform 2s var(--ease), opacity 2s var(--ease), background 2s;
   opacity: 0;
-  filter: url(#roots); /* The twist: shapes edge into organic roots */
+  filter: url(#roots);
 }
 
 

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARCHIVE — Avant-Garde Fashion</title>
+  <meta name="description"
+    content="A curated archive of avant-garde fashion deconstruction. Rick Owens, Maison Margiela, Yohji Yamamoto, Carol Christian Poell, Guidi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-level="0">
+
+  <!-- ── GRAIN OVERLAY ── -->
+  <canvas id="grain" aria-hidden="true"></canvas>
+
+  <!-- ── SITE HEADER ── -->
+  <header class="site-header" id="site-header">
+    <div class="header-left">
+      <span class="site-title">ARCHIVE</span>
+      <span class="site-sub">Avant-Garde Fashion — Vol. I</span>
+    </div>
+    <nav class="header-nav" id="header-nav">
+      <button class="nav-link" data-target="ch-owens">Owens</button>
+      <button class="nav-link" data-target="ch-poell">Poell</button>
+      <button class="nav-link" data-target="ch-margiela">Margiela</button>
+      <button class="nav-link" data-target="ch-yamamoto">Yamamoto</button>
+      <button class="nav-link" data-target="ch-guidi">Guidi</button>
+    </nav>
+    <div class="header-right">
+      <!-- ── SVG FILTERS ── -->
+      <svg style="display:none;">
+        <filter id="roots">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.08" numOctaves="4" result="noise">
+            <animate attributeName="baseFrequency" values="0.02 0.08; 0.02 0.12; 0.02 0.08" dur="10s"
+              repeatCount="indefinite" />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="60" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="lava-melt">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.15" numOctaves="3" result="waves">
+            <animate attributeName="baseFrequency" values="0.02 0.15; 0.04 0.25; 0.02 0.15" dur="12s"
+              repeatCount="indefinite" />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="waves" scale="40" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
+      <!-- ── AUDIO ── -->
+      <button id="audio-btn" class="audio-btn" aria-label="Toggle sound">
+        <span class="audio-dot"></span>Sound
+      </button>
+    </div>
+  </header>
+
+  <!-- ── DEPTH INDICATOR ── -->
+  <div class="depth-bar" id="depth-bar">
+    <div class="depth-fill" id="depth-fill"></div>
+  </div>
+
+  <!-- ── MAIN SCROLL CONTAINER ── -->
+  <main id="main" class="main">
+
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
+    <section class="section hero-section" id="ch-hero">
+      <div class="hero-layout">
+        <div class="hero-image-col">
+          <div class="editorial-image hero-img">
+            <img src="assets/image/YMM_fullperson.jpg" alt="Hero Editorial Image" />
+          </div>
+        </div>
+        <div class="hero-text-col">
+          <p class="overline">Est. 1981 — Ongoing</p>
+          <h1 class="hero-title">The<br /><em>Deconstruction</em><br />Archive</h1>
+          <p class="body-text">A curated record of garments that questioned the body, the seam, and the idea of clothing
+            itself. Five designers. One philosophy. No resolution.</p>
+          <p class="caption">Scroll to descend</p>
+          <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         RICK OWENS
+    ══════════════════════════════════ -->
+    <section class="section designer-section" id="ch-owens" data-designer="owens" data-depth="1">
+
+      <div class="section-header">
+        <span class="section-index">01</span>
+        <div class="section-title-group">
+          <h2 class="designer-name">Rick Owens</h2>
+          <p class="designer-origin">Los Angeles / Paris — est. 1994</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="col-image">
+          <div class="editorial-image tall">
+            <img src="assets/image/RickOwens_fullperson.jpg" alt="Rick Owens Portrait" />
+          </div>
+          <p class="img-caption">FW2023 Luxor — runway, Paris</p>
+        </div>
+        <div class="col-text">
+          <blockquote class="designer-quote">"I make clothes for people who are not afraid of other people."
+          </blockquote>
+          <div class="text-block">
+            <p class="label">Philosophy</p>
+            <p class="body-text">The silhouette as monument. Draping as protest. Volume as the only honest response to
+              the human form. Owens builds garments the way architects build ruins — with intention toward eternity.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Construction</p>
+            <p class="body-text">Boiled wool. Object-dyed leather. Asymmetric hem lines. Hand-finished seams that expose
+              the process. The lining as garment. The closure as ornament.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Collections Referenced</p>
+            <p class="ref-list">FW2014 Faun — SS2015 Sphinx — FW2023 Luxor<br />SS2011 Palace — FW2006 Release — SS2024
+              Porterville</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="gallery-label">
+        <span class="label">Garment Archive</span>
+        <span class="gallery-hint">hover any piece</span>
+      </div>
+      <div class="garment-grid" id="owens-gallery">
+        <div class="garment-item" data-id="ro1">
+          <div class="garment-img"><img
+              src="assets/image/ss2020-rick-owens-megalaced-tecuatl-black-trucker-jacket-sm-eltgjqz-7-pmwzr.jpg"
+              alt="Megalaced Trucker Jacket" /></div>
+          <p class="garment-title">Megalaced Trucker Jacket</p>
+          <p class="garment-year">SS2020</p>
+        </div>
+        <div class="garment-item" data-id="ro2">
+          <div class="garment-img"><img
+              src="assets/image/Rick-Owens-DRKSHDW-Bolan-Bootcut-Patchwork-Flared-Jeans-Mineral-Pearl.jpg"
+              alt="Bolan Patchwork Jeans" /></div>
+          <p class="garment-title">Bolan Patchwork Flare Jeans</p>
+          <p class="garment-year">Ongoing</p>
+        </div>
+        <div class="garment-item" data-id="ro3">
+          <div class="garment-img"><img src="assets/image/RIckOwens-kissheels.jpg" alt="Kiss Heels" /></div>
+          <p class="garment-title">Kiss Heels</p>
+          <p class="garment-year">Ongoing</p>
+        </div>
+      </div>
+
+
+      <div class="section-transition"></div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CAROL CHRISTIAN POELL
+    ══════════════════════════════════ -->
+    <section class="section designer-section" id="ch-poell" data-designer="poell" data-depth="2">
+
+      <div class="section-header">
+        <span class="section-index">02</span>
+        <div class="section-title-group">
+          <h2 class="designer-name">Carol Christian Poell</h2>
+          <p class="designer-origin">Milan — est. 1993</p>
+        </div>
+      </div>
+
+      <div class="two-col reverse">
+        <div class="col-text">
+          <blockquote class="designer-quote">Process is the only truth the garment knows.</blockquote>
+          <div class="text-block">
+            <p class="label">Philosophy</p>
+            <p class="body-text">The seam as scar. The stitch as record of time spent. Poell builds garments that
+              remember their own construction — each layer of hand-stitching a document of the hours invested.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Construction</p>
+            <p class="body-text">Running stitch by hand. Drip-rubber sole application. Horse intestine lining.
+              Vegetable-tanned continuous leathers. No sample made — every piece is a prototype and a final.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Collections Referenced</p>
+            <p class="ref-list">AW2003 Continuous Jacket — SS2000 Drip Coat<br />AW2006 Suspended Sole — SS2004
+              Object-dyed Series</p>
+          </div>
+        </div>
+        <div class="col-image">
+          <div class="editorial-image tall">
+            <img src="assets/image/CPP_fullperson.jpg" alt="Carol Christian Poell Portrait" />
+          </div>
+          <p class="img-caption">AW2003 — studio, Milan</p>
+        </div>
+      </div>
+
+      <div class="gallery-label">
+        <span class="label">Garment Archive</span>
+        <span class="gallery-hint">hover any piece</span>
+      </div>
+      <div class="garment-grid" id="poell-gallery">
+        <div class="garment-item" data-id="ccp1">
+          <div class="garment-img"><img src="assets/image/CPP-pig_bag.jpg" alt="Pig Bag" /></div>
+          <p class="garment-title">Pig Bag</p>
+          <p class="garment-year">Object Series</p>
+        </div>
+        <div class="garment-item" data-id="ccp2">
+          <div class="garment-img"><img src="assets/image/CPP_porsthetic_drip_boots.jpg" alt="Prosthetic Drip Boots" />
+          </div>
+          <p class="garment-title">Prosthetic Drip Boots</p>
+          <p class="garment-year">AW2006</p>
+        </div>
+        <div class="garment-item" data-id="ccp3">
+          <div class="garment-img"><img src="assets/image/carol-christian-poell-necklace-with-teeth-MM1480.jpg"
+              alt="Teeth Necklace" /></div>
+          <p class="garment-title">Teeth Necklace</p>
+          <p class="garment-year">Ongoing</p>
+        </div>
+      </div>
+
+
+      <div class="section-transition"></div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         MAISON MARGIELA
+    ══════════════════════════════════ -->
+    <section class="section designer-section" id="ch-margiela" data-designer="margiela" data-depth="3">
+
+      <div class="section-header">
+        <span class="section-index">03</span>
+        <div class="section-title-group">
+          <h2 class="designer-name">Maison Margiela</h2>
+          <p class="designer-origin">Paris — est. 1988</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="col-image">
+          <div class="editorial-image tall">
+            <img src="assets/image/MMM_fullperson.jpg" alt="Maison Margiela Portrait" />
+          </div>
+          <p class="img-caption">SS1989 — presentation, Paris</p>
+        </div>
+        <div class="col-text">
+          <blockquote class="designer-quote">The white label is the refusal of the signature.</blockquote>
+          <div class="text-block">
+            <p class="label">Philosophy</p>
+            <p class="body-text">Anonymity as authorship. The stockman as garment. The lining as exterior. Margiela
+              systematically dismantled the conventions of fashion to reveal what fashion had always concealed: its own
+              construction.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Construction</p>
+            <p class="body-text">Replica of found objects. Artisanal reconstruction. Tabi boot as split-toe
+              architecture. Stockman jacket with exposed inner padding. The seam turned outward. The concept made
+              literal.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Collections Referenced</p>
+            <p class="ref-list">Line 0 Artisanal — Line 1 (womenswear) — Line 14<br />SS1989 — AW1992 Replica — AW2008
+              Les Vêtements</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-label">
+        <span class="label">Garment Archive</span>
+        <span class="gallery-hint">hover any piece</span>
+      </div>
+      <div class="garment-grid" id="margiela-gallery">
+        <div class="garment-item" data-id="mm1">
+          <div class="garment-img"><img src="assets/image/MM-gats_pained.jpg" alt="Painted GATs" /></div>
+          <p class="garment-title">Painted GATs</p>
+          <p class="garment-year">Artisanal</p>
+        </div>
+        <div class="garment-item" data-id="mm2">
+          <div class="garment-img"><img src="assets/image/mm-gats_japan.jpg" alt="Japan GATs" /></div>
+          <p class="garment-title">Japan GATs</p>
+          <p class="garment-year">Line 22</p>
+        </div>
+        <div class="garment-item" data-id="mm3">
+          <div class="garment-img"><img src="assets/image/mm_tabi.jpg" alt="Tabi Boot" /></div>
+          <p class="garment-title">Tabi Boot</p>
+          <p class="garment-year">Ongoing</p>
+        </div>
+      </div>
+
+
+      <div class="section-transition"></div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         YOHJI YAMAMOTO
+    ══════════════════════════════════ -->
+    <section class="section designer-section" id="ch-yamamoto" data-designer="yamamoto" data-depth="4">
+
+      <div class="section-header">
+        <span class="section-index">04</span>
+        <div class="section-title-group">
+          <h2 class="designer-name">Yohji Yamamoto</h2>
+          <p class="designer-origin">Tokyo / Paris — est. 1972</p>
+        </div>
+      </div>
+
+      <div class="two-col reverse">
+        <div class="col-text">
+          <blockquote class="designer-quote">"Perfection is ugly. I want to see scars, failure, disorder, distortion."
+          </blockquote>
+          <div class="text-block">
+            <p class="label">Philosophy</p>
+            <p class="body-text">Black as the only honest response to color. Asymmetry as the truest geometry. The
+              unfinished hem as deliberate statement. Yamamoto refuses resolution — his garments exist in permanent
+              tension.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Construction</p>
+            <p class="body-text">Asymmetric pattern cutting. Draped without fixing. Hanging seams. Deliberate
+              imprecision. The garment as shadow — present but refusing definition.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Collections Referenced</p>
+            <p class="ref-list">SS1981 Hiroshima Chic — AW1983 — SS2003<br />Y's Series — Pour Homme — SS2011 — AW2022
+            </p>
+          </div>
+        </div>
+        <div class="col-image">
+          <div class="editorial-image tall">
+            <img src="assets/image/YMM_fullperson.jpg" alt="Yohji Yamamoto Portrait" />
+          </div>
+          <p class="img-caption">AW1983 — runway, Paris</p>
+        </div>
+      </div>
+
+      <div class="gallery-label">
+        <span class="label">Garment Archive</span>
+        <span class="gallery-hint">hover any piece</span>
+      </div>
+      <div class="garment-grid" id="yamamoto-gallery">
+        <div class="garment-item" data-id="yy1">
+          <div class="garment-img"><img src="assets/image/YMM_attach_print_coat.jpg" alt="Attach Print Coat" /></div>
+          <p class="garment-title">Attach Print Coat</p>
+          <p class="garment-year">Pour Homme</p>
+        </div>
+        <div class="garment-item" data-id="yy2">
+          <div class="garment-img"><img src="assets/image/YMM_medium_wool_brim_hat.jpg" alt="Wool Brim Hat" /></div>
+          <p class="garment-title">Wool Brim Hat</p>
+          <p class="garment-year">Pour Homme</p>
+        </div>
+        <div class="garment-item" data-id="yy3">
+          <div class="garment-img"><img src="assets/image/YMM_side_zip-up_jacket.jpg" alt="Side Zip-up Jacket" /></div>
+          <p class="garment-title">Side Zip-up Jacket</p>
+          <p class="garment-year">Y's Series</p>
+        </div>
+      </div>
+
+
+      <div class="section-transition"></div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         GUIDI
+    ══════════════════════════════════ -->
+    <section class="section designer-section" id="ch-guidi" data-designer="guidi" data-depth="5">
+
+      <div class="section-header">
+        <span class="section-index">05</span>
+        <div class="section-title-group">
+          <h2 class="designer-name">Guidi</h2>
+          <p class="designer-origin">Florence — est. 1988</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="col-image">
+          <div class="editorial-image tall">
+            <img src="assets/image/Guidi.jpg" alt="Guidi Portrait" />
+          </div>
+          <p class="img-caption">FW2015 — look 12 — Florence atelier</p>
+        </div>
+        <div class="col-text">
+          <blockquote class="designer-quote">The leather lives. It remembers every touch.</blockquote>
+          <div class="text-block">
+            <p class="label">Philosophy</p>
+            <p class="body-text">Object-dyeing on living hide. The gradient as autobiography. Time visible in the
+              surface of the material. Guidi makes garments that age with their wearer — each piece a collaboration
+              between maker and time.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Construction</p>
+            <p class="body-text">Horse leather on living horse. Vegetable-tanned hide. Hand-painted fire gradient.
+              Single-welt construction. The sole as statement of permanence against a disposable world.</p>
+          </div>
+          <div class="text-block">
+            <p class="label">Collections Referenced</p>
+            <p class="ref-list">FW2010 — SS2013 — FW2018 — FW2022<br />Object-Dyed Leather Series — Horse Hide Boots</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-label">
+        <span class="label">Garment Archive</span>
+        <span class="gallery-hint">hover any piece</span>
+      </div>
+      <div class="garment-grid" id="guidi-gallery">
+        <div class="garment-item" data-id="g1">
+          <div class="garment-img"><img src="assets/image/Guidi-Leathter_Boot.jpg" alt="Leather Boot" /></div>
+          <p class="garment-title">Leather Boot</p>
+          <p class="garment-year">Horse Hide</p>
+        </div>
+        <div class="garment-item" data-id="g2">
+          <div class="garment-img"><img src="assets/image/Guidi-classy_leather_heel.jpg" alt="Classy Leather Heel" />
+          </div>
+          <p class="garment-title">Classy Leather Heel</p>
+          <p class="garment-year">Ongoing</p>
+        </div>
+        <div class="garment-item" data-id="g3">
+          <div class="garment-img"><img src="assets/image/Guidi-leather_jacket.jpg" alt="Leather Jacket" /></div>
+          <p class="garment-title">Leather Jacket</p>
+          <p class="garment-year">Object-Dyed</p>
+        </div>
+      </div>
+
+
+      <div class="section-transition"></div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         EPILOGUE - INFINITE VOID
+    ══════════════════════════════════ -->
+    <section class="section infinite-void-section" id="ch-void" data-depth="6">
+      <div class="void-content">
+        <p class="void-text">The form is consumed.<br />Only the archive remains.</p>
+      </div>
+    </section>
+
+    <!-- ── CREEPING VOID OVERLAY ── -->
+    <div class="creeping-void" id="creeping-void" aria-hidden="true"></div>
+  </main><!-- /main -->
+
+  <!-- ── GARMENT HOVER PANEL ── -->
+  <aside class="garment-panel" id="garment-panel" aria-hidden="true">
+    <div class="panel-inner">
+      <div class="panel-close-area"></div>
+      <p class="panel-label" id="panel-collection"></p>
+      <h3 class="panel-name" id="panel-name"></h3>
+      <div class="panel-divider"></div>
+      <dl class="panel-details" id="panel-details"></dl>
+      <p class="panel-concept" id="panel-concept"></p>
+    </div>
+  </aside>
+
+  <!-- ── GAME OVERLAY ── -->
+  <div class="game-overlay hidden" id="game-overlay">
+    <button class="overlay-close" id="game-close">Close</button>
+    <div class="game-stage" id="game-stage"></div>
+  </div>
+
+  <!-- ── DETERIORATION FLICKER ── -->
+  <div class="page-flicker" id="page-flicker" aria-hidden="true"></div>
+
+  <!-- ── OS DEATH SCREEN ── -->
+  <div id="os-death-screen" class="os-death-screen hidden" aria-hidden="true">
+    <img id="death-image" src="" alt="Fatal Error" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -422,15 +422,22 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
     const depth = parseInt(e.target.dataset.depth || 0);
+    
+    // Always update nav based on current section in view
+    const designer = e.target.dataset.designer;
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.target === 'ch-' + designer));
+
     if (depth !== currentLevel) {
       currentLevel = depth;
+      
       body.dataset.level = depth;
       depthFill.style.width = (depth / 6 * 100) + '%';
-      // update nav active
-      const designer = e.target.dataset.designer;
-      navLinks.forEach(l => l.classList.toggle('active', l.dataset.target === 'ch-' + designer));
+      
       // subtle flicker on transition from depth 3+
       if (depth >= 3) triggerFlicker();
+
+      // Инициализируем плавное разрушение вошедшей в поле зрения секции
+      initSectionDecay(depth);
     }
   });
 }, { threshold: 0.3 });
@@ -596,6 +603,167 @@ function recollectTextNodes() {
 // Initial node collection
 recollectTextNodes();
 
+// Объект для хранения интервалов разрушения секций
+const sectionDecayIntervals = {};
+// Массив соответствия глубины (level) идентификаторам секций в HTML
+const DEPTH_SECTIONS = [
+  'ch-hero',      // 0
+  'ch-owens',     // 1
+  'ch-poell',     // 2
+  'ch-margiela',  // 3
+  'ch-yamamoto',  // 4
+  'ch-guidi'      // 5
+];
+
+// ── ЭФФЕКТ: ПЛАВНОЕ ПАДЕНИЕ ЦЕЛОГО БЛОКА ──
+function fallElement(el) {
+  if (!el || el.classList.contains('is-destroyed')) return;
+  el.classList.add('is-destroyed');
+
+  const rect = el.getBoundingClientRect();
+  const clone = el.cloneNode(true);
+  
+  // Убираем анимации и сбрасываем трансформации у клонов
+  clone.style.animation = 'none';
+  clone.style.transition = 'none';
+  clone.style.margin = '0';
+  clone.style.transform = 'none';
+  clone.style.position = 'absolute';
+  clone.style.inset = '0';
+  clone.style.width = '100%';
+  clone.style.height = '100%';
+
+  const container = document.createElement('div');
+  container.className = 'fall-container';
+  container.style.position = 'fixed';
+  container.style.left = `${rect.left}px`;
+  container.style.top = `${rect.top}px`;
+  container.style.width = `${rect.width}px`;
+  container.style.height = `${rect.height}px`;
+  container.style.zIndex = '9999';
+  container.style.pointerEvents = 'none';
+
+  const fallClasses = ['gravity-fall', 'gravity-fall-left', 'gravity-fall-right', 'gravity-tumble', 'gravity-collapse'];
+  container.classList.add(fallClasses[Math.floor(Math.random() * fallClasses.length)]);
+  
+  container.appendChild(clone);
+  document.body.appendChild(container);
+
+  // Скрываем оригинал, оставляя его геометрию в документе
+  el.style.visibility = 'hidden';
+
+  setTimeout(() => {
+    container.remove();
+  }, 5000);
+}
+
+// ── ЭФФЕКТ: РАЗРЕЗАНИЕ БЛОКА ──
+function splitElement(el) {
+  if (!el || el.classList.contains('is-destroyed')) return;
+  el.classList.add('is-destroyed');
+
+  const rect = el.getBoundingClientRect();
+  const container = document.createElement('div');
+  container.className = 'split-container';
+  container.style.position = 'fixed';
+  container.style.left = `${rect.left}px`;
+  container.style.top = `${rect.top}px`;
+  container.style.width = `${rect.width}px`;
+  container.style.height = `${rect.height}px`;
+  container.style.zIndex = '9999';
+  container.style.pointerEvents = 'none';
+
+  // Различные направления разрезов
+  const splitDirections = ['split-diagonal', 'split-horizontal', 'split-vertical'];
+  const directionClass = splitDirections[Math.floor(Math.random() * splitDirections.length)];
+  container.classList.add(directionClass);
+
+  const half1 = document.createElement('div');
+  half1.className = 'split-half split-half-1';
+  
+  const half2 = document.createElement('div');
+  half2.className = 'split-half split-half-2';
+
+  const clone1 = el.cloneNode(true);
+  const clone2 = el.cloneNode(true);
+
+  // Убираем анимации и сбрасываем трансформации у клонов
+  [clone1, clone2].forEach(clone => {
+    clone.style.animation = 'none';
+    clone.style.transition = 'none';
+    clone.style.margin = '0';
+    clone.style.transform = 'none';
+    clone.style.position = 'absolute';
+    clone.style.inset = '0';
+    clone.style.width = '100%';
+    clone.style.height = '100%';
+  });
+
+  half1.appendChild(clone1);
+  half2.appendChild(clone2);
+  container.appendChild(half1);
+  container.appendChild(half2);
+
+  document.body.appendChild(container);
+
+  // Скрываем оригинал, оставляя его геометрию в документе
+  el.style.visibility = 'hidden';
+
+  setTimeout(() => {
+    container.remove();
+  }, 5000);
+}
+
+// Инициализация разрушения секции по таймеру
+function initSectionDecay(level) {
+  if (level < 1 || level > 5) return;
+  
+  const sectionId = DEPTH_SECTIONS[level];
+  if (!sectionId) return;
+
+  // Если для этой секции уже запущен или отработал таймер, выходим
+  if (sectionDecayIntervals[sectionId]) return;
+
+  // Записываем плейсхолдер, чтобы избежать повторных запусков
+  sectionDecayIntervals[sectionId] = true;
+
+  // Даем пользователю 12 секунд спокойно посмотреть контент секции
+  setTimeout(() => {
+    const decayable = getDecayableElements(sectionId);
+    if (decayable.length === 0) return;
+
+    // Запускаем интервал постепенного разрушения элементов
+    const intervalId = setInterval(() => {
+      // Ищем еще неразрушенные элементы
+      const activeElements = decayable.filter(el => !el.classList.contains('is-destroyed') && el.style.visibility !== 'hidden');
+      
+      if (activeElements.length === 0) {
+        clearInterval(intervalId);
+        return;
+      }
+
+      // Выбираем один случайный элемент
+      const target = activeElements[Math.floor(Math.random() * activeElements.length)];
+
+      // С вероятностью 50% роняем целиком, с вероятностью 50% разрезаем
+      if (Math.random() < 0.5) {
+        fallElement(target);
+      } else {
+        splitElement(target);
+      }
+    }, 6000); // Разрушаем один элемент каждые 6 секунд
+
+    sectionDecayIntervals[sectionId] = intervalId;
+  }, 12000); // 12 секунд на ознакомление
+}
+
+function getDecayableElements(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (!section) return [];
+  // Находим все текстовые блоки, картинки, карточки вещей и заголовки секций
+  return Array.from(section.querySelectorAll('.editorial-image, .garment-item, .text-block, .section-header'));
+}
+
 // ── PHASE 1: Soft Scrambling (lvl 1-2) ──
 function scrambleTextPhase1() {
   if (currentLevel < 1 || currentLevel > 2) return;
@@ -733,65 +901,6 @@ function startDecayEngine() {
   }, ms);
 }
 
-// ── EFFECT: SPLIT BLOCK & FALL ──
-function triggerBlockSplit() {
-  const targets = Array.from(document.querySelectorAll('.editorial-image, .garment-item, .text-block, .section-header'));
-  const inView = targets.filter(el => {
-    const r = el.getBoundingClientRect();
-    // Элемент должен быть в видимой области и еще не разрезан/скрыт
-    return r.top < window.innerHeight && r.bottom > 0 && r.width > 50 && r.height > 50 && !el.classList.contains('is-split') && el.style.visibility !== 'hidden';
-  });
-
-  if (inView.length === 0) return;
-
-  const target = inView[Math.floor(Math.random() * inView.length)];
-  target.classList.add('is-split');
-
-  const rect = target.getBoundingClientRect();
-
-  const container = document.createElement('div');
-  container.className = 'split-container';
-  container.style.width = rect.width + 'px';
-  container.style.height = rect.height + 'px';
-  container.style.left = rect.left + 'px';
-  container.style.top = rect.top + 'px';
-
-  const half1 = document.createElement('div');
-  half1.className = 'split-half split-half-1';
-  const half2 = document.createElement('div');
-  half2.className = 'split-half split-half-2';
-
-  const clone1 = target.cloneNode(true);
-  const clone2 = target.cloneNode(true);
-
-  // Сброс трансформаций, которые могут деформировать клонов
-  [clone1, clone2].forEach(clone => {
-    clone.style.animation = 'none';
-    clone.style.transition = 'none';
-    clone.style.margin = '0';
-    clone.style.transform = 'none';
-    clone.style.position = 'absolute';
-    clone.style.inset = '0';
-    clone.style.width = '100%';
-    clone.style.height = '100%';
-  });
-
-  half1.appendChild(clone1);
-  half2.appendChild(clone2);
-  container.appendChild(half1);
-  container.appendChild(half2);
-
-  document.body.appendChild(container);
-
-  // Скрываем оригинал, сохраняя его геометрию в потоке
-  target.style.visibility = 'hidden';
-
-  // Удаляем контейнер после окончания анимации
-  setTimeout(() => {
-    container.remove();
-  }, 5000);
-}
-
 function runDecayStep() {
   const lvl = currentLevel;
 
@@ -811,7 +920,6 @@ function runDecayStep() {
   if (lvl === 4) {
     scrambleTextPhase3();
     if (Math.random() < 0.5) spawnLiteralDrip();
-    if (Math.random() < 0.15) triggerBlockSplit();
     for (let i = 0; i < 3; i++) {
       if (Math.random() < 0.5) spawnDeadPixel();
     }
@@ -821,7 +929,6 @@ function runDecayStep() {
   if (lvl === 5) {
     scrambleTextPhase4();
     if (Math.random() < 0.7) spawnLiteralDrip();
-    if (Math.random() < 0.3) triggerBlockSplit();
     for (let i = 0; i < 5; i++) spawnDeadPixel();
   }
 
